@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <style>
+  *{font-size:large; font-weight: bold;}
+  </style>
+  <head>
+    <title>Card Dealer</title>
+  </head>
+  <body>
+    <input type="range" min="0" max="52" value="1" id="cardAmount"> <span id="num">1</span>
+    <button type="button" onclick="export()">Deal</button>
+    <p id="hand"> </p>
+    <script>
+			var deck = ["🂡","🂢","🂣","🂤","🂥","🂦","🂧","🂨","🂩","🂪","🂫","🂭","🂮",
+      	"🂱","🂲","🂳","🂴","🂵","🂶","🂷","🂸","🂹","🂺","🂻","🂽","🂾",
+        "🃁","🃂","🃃","🃄","🃅","🃆","🃇","🃈","🃉","🃊","🃋","🃍","🃎"
+        "🃑","🃒","🃓","🃔","🃕","🃖","🃗","🃘","🃙","🃚","🃛","🃝","🃞"]
+      function deal(source, size){
+      	var arr = source;
+        var blank = [];
+        for(var i = 0; i < size; i++){
+        	if(arr.length > 0){
+          	blank.push(arr.splice(Math.floor(Math.random()*arr.length),1));
+          } else {
+          	break;
+          }
+        }
+        return blank.toString();
+      }
+      var slider = document.getElementById("cardAmount");
+			var output = document.getElementById("num");
+      var dealt = document.getElementById("hand");
+			output.innerHTML = slider.value;
+      slider.oninput = function() {
+  			output.innerHTML = this.value;
+			}
+      function export(){
+      	dealt.innerHTML = deal(deck, output.innerHTML);
+      }
+  	</script>
+  </body>
+</html>
