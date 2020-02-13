@@ -8,7 +8,7 @@
   </head>
   <body>
     <input type="range" min="0" max="52" value="1" id="cardAmount"> <span id="num">1</span>
-    <button type="button" onclick="export()">Deal</button>
+    <button type="button" onclick="dealCards()">Deal</button>
     <p id="hand"> </p>
     <script>
 			var deck = ["🂡","🂢","🂣","🂤","🂥","🂦","🂧","🂨","🂩","🂪","🂫","🂭","🂮",
@@ -18,7 +18,7 @@
       function deal(source, size){
       	var arr = source;
         var blank = [];
-        for(var i = 0; i < size; i++){
+        for(var i = 0; i < parseInt(size); i++){
         	if(arr.length > 0){
           	blank.push(arr.splice(Math.floor(Math.random()*arr.length),1));
           } else {
@@ -34,7 +34,7 @@
       slider.oninput = function() {
   			output.innerHTML = this.value;
 			}
-      function export(){
+      function dealCards(){
       	dealt.innerHTML = deal(deck, output.innerHTML);
       }
   	</script>
